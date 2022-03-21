@@ -5,10 +5,10 @@ services:
     ports:
       - ${FRONT_SSR_PORT}:3000
     build:
-      context: ../ssr-front
+      context: ../shopcrm-front
       dockerfile: Dockerfile
     volumes:
-      - ../ssr-front:/usr/src/app
+      - ../shopcrm-front:/usr/src/app
       - /usr/src/app/node_modules
       - /usr/src/app/.next
     env_file:
