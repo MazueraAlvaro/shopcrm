@@ -13,4 +13,4 @@ directory
 ```
 
 ### Using Docker
-To start using docker, move to shopcrm dir and run `docker-compose build`, once the project is built to run up exec `docker-compose up -d`.
+To start using docker, move to shopcrm dir, copy the `.env.example` file to `.env` and set your owns values, then run `docker-compose build`, once the project is built to run up exec `docker-compose up -d`.
