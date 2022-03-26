@@ -1,5 +1,11 @@
 version: "3.3"
 
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
 services:
   ssr-front:
     ports:
@@ -13,3 +19,23 @@ services:
       - /usr/src/app/.next
     env_file:
       - .env
+  mariadb:
+      build:
+        context: ../shopcrm-back/mariadb
+        args:
+          - http_proxy
+          - https_proxy
+          - no_proxy
+          - MARIADB_VERSION=${MARIADB_VERSION}
+      volumes:
+        - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
+      ports:
+        - "${MARIADB_PORT}:3306"
+      environment:
+        - TZ=${WORKSPACE_TIMEZONE}
+        - MYSQL_DATABASE=${MARIADB_DATABASE}
+        - MYSQL_USER=${MARIADB_USER}
+        - MYSQL_PASSWORD=${MARIADB_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      networks:
+        - backend
