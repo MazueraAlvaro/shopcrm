@@ -39,3 +39,33 @@ services:
         - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       networks:
         - backend
+  api-dev:
+      image: nestjs-api-dev:1.0.0
+      build:
+          context: ../shopcrm-back
+          target: development
+      command: npm run start:debug
+      ports:
+          - 3000:3000
+          - 9229:9229
+      networks:
+          - backend
+      volumes:
+          - ../shopcrm-back:/usr/src/app
+          - /usr/src/app/node_modules
+      restart: unless-stopped
+  api-prod:
+        image: nestjs-api-prod:1.0.0
+        build:
+            context: ../shopcrm-back
+            target: production
+        command: npm run start:prod
+        ports:
+            - 3000:3000
+            - 9229:9229
+        networks:
+            - backend
+        volumes:
+            - ../shopcrm-back:/usr/src/app
+            - /usr/src/app/node_modules
+        restart: unless-stopped
