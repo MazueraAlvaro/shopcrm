@@ -21,7 +21,7 @@ services:
       - .env
   mariadb:
       build:
-        context: ../shopcrm-back/mariadb
+        context: ../mariadb
         args:
           - http_proxy
           - https_proxy
