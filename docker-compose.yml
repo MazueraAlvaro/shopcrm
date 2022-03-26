@@ -69,3 +69,11 @@ services:
             - ../shopcrm-back:/usr/src/app
             - /usr/src/app/node_modules
         restart: unless-stopped
+  castlemock:
+        image: castlemock/castlemock
+        ports: 
+            - 8080:8080
+        volumes:
+            - ${DATA_PATH_HOST}/castlemock:/root/.castlemock
+        networks:
+            - backend
