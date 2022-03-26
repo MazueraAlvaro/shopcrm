@@ -3,12 +3,17 @@
 This repo is related to the root directory on shopcrm
 
 ## Config
-Create a directory and clone this repository on it, additionally clone the repo https://github.com/MazueraAlvaro/shopcrm-front, directory result example:
+Create a directory and clone this repository on it, additionally clone the following repos: 
 
+- https://github.com/MazueraAlvaro/shopcrm-front
+- https://github.com/MazueraAlvaro/shopcrm-back
+
+Directory result example:
 
 ```bash
 directory
     ├───shopcrm
+    ├───shopcrm-back
     └───shopcrm-front
 ```
 
